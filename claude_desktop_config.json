@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "hawk-core": {
+      "command": "/path/to/node",
+      "args": [
+        "/path/to/mcp-remote/dist/proxy.js",
+        "https://hawk.business/api/plugin/mcp/core",
+        "--header",
+        "Authorization: Bearer YOUR_API_KEY"
+      ]
+    }
+  }
+}
