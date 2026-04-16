@@ -18,15 +18,9 @@ Connect your [Hawk](https://hawk.business) account to Claude Desktop. Get instan
 
 ### 1. Get your API key
 
-In your Hawk dashboard go to **Settings → Integrations** and copy your **Channel API Key**.
+In your Hawk dashboard go to **Settings → Integrations → Claude Desktop Plugin** and copy your **Channel API Key**.
 
-### 2. Install mcp-remote
-
-```bash
-npm install -g mcp-remote
-```
-
-### 3. Add to Claude Desktop config
+### 2. Add to Claude Desktop config
 
 Open `~/Library/Application Support/Claude/claude_desktop_config.json` (Mac) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows) and add:
 
@@ -34,23 +28,21 @@ Open `~/Library/Application Support/Claude/claude_desktop_config.json` (Mac) or 
 {
   "mcpServers": {
     "hawk-core": {
-      "command": "/path/to/node",
-      "args": [
-        "/path/to/mcp-remote/dist/proxy.js",
-        "https://hawk.business/api/plugin/mcp/core",
-        "--header",
-        "Authorization: Bearer YOUR_API_KEY"
-      ]
+      "command": "npx",
+      "args": ["-y", "@buzzie-ai/hawk-core"],
+      "env": {
+        "HAWK_API_KEY": "YOUR_API_KEY"
+      }
     }
   }
 }
 ```
 
-Replace `/path/to/node` with your Node 20+ binary (run `which node` to find it) and `YOUR_API_KEY` with the key from Step 1.
+Replace `YOUR_API_KEY` with the key from Step 1.
 
-> **Tip:** Your Hawk dashboard at **Settings → Integrations → Claude Desktop Plugin** shows a pre-filled config snippet with your API key already inserted.
+> **Tip:** Your Hawk dashboard shows a pre-filled config snippet with your API key already inserted.
 
-### 4. Restart Claude Desktop
+### 3. Restart Claude Desktop
 
 The **hawk-core** tools will appear in the tool list. Try: *"Show me my unpaid invoices"* or *"Create an invoice for Acme Corp for $500"*.
 
