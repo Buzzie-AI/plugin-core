@@ -55,8 +55,8 @@ The **hawk-core** tools will appear in the tool list. Try: *"Show me my unpaid i
 | `create_invoice` | Create a new invoice |
 | `update_invoice` | Update invoice fields (requires SyncToken) |
 | `void_invoice` | Void an invoice |
+| `send_invoice_reminder` | Email an invoice reminder to the customer |
 | `list_customers` | List customers with optional search |
-| `get_customer` | Get a single customer by ID |
 | `create_customer` | Create a new customer |
 | `update_customer` | Update customer fields (requires SyncToken) |
 | `deactivate_customer` | Deactivate a customer |
