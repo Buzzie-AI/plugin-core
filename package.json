@@ -1,6 +1,6 @@
 {
   "name": "@buzzie-ai/hawk-core",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Hawk Core plugin for Claude Desktop — launches the Hawk MCP server via mcp-remote.",
   "bin": {
     "hawk-core": "bin/hawk-core.js"

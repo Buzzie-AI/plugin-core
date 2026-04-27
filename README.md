@@ -1,11 +1,19 @@
 # Hawk Core Plugin for Claude Desktop
 
-Connect your [Hawk](https://hawk.business) account to Claude Desktop. Get instant access to your invoices and customers — create, update, search, and manage them directly from a Claude conversation.
+Connect your [Hawk](https://hawk.business) account to Claude Desktop. Run your QuickBooks-backed business — invoices, customers, employees, payables, time, products, financials, and recurring agent runs — directly from a Claude conversation.
 
 ## What you can do
 
-- **Invoices** — list, get, create, update, void
-- **Customers** — list, get, create, update, deactivate
+- **Invoices** — list, get, create, update, void, send reminders
+- **Customers** — list, create, update, deactivate
+- **Financial reports** — Profit & Loss, Balance Sheet, Chart of Accounts, raw QBO queries
+- **Bills** — list payables, filter by unpaid or overdue
+- **Employees** — list, get, create
+- **Time tracking** — list and record timesheet entries
+- **Products & services** — list, get, create
+- **Invoice theming** — preview branded invoices and update your company logo
+- **Notifications** — message customers (WhatsApp / email / iMessage) and alert the owner
+- **Schedules** — manage recurring autonomous Hawk agent runs
 - **Ask Hawk** — chat with your business data in natural language
 
 ## Requirements
@@ -48,6 +56,8 @@ The **hawk-core** tools will appear in the tool list. Try: *"Show me my unpaid i
 
 ## Tools
 
+### Invoices
+
 | Tool | Description |
 |------|-------------|
 | `list_invoices` | List invoices with optional status filter |
@@ -56,11 +66,84 @@ The **hawk-core** tools will appear in the tool list. Try: *"Show me my unpaid i
 | `update_invoice` | Update invoice fields (requires SyncToken) |
 | `void_invoice` | Void an invoice |
 | `send_invoice_reminder` | Email an invoice reminder to the customer |
-| `list_customers` | List customers with optional search |
+
+### Customers
+
+| Tool | Description |
+|------|-------------|
+| `list_customers` | List active customers |
 | `create_customer` | Create a new customer |
 | `update_customer` | Update customer fields (requires SyncToken) |
 | `deactivate_customer` | Deactivate a customer |
-| `ask_hawk` | Ask a question about your business data |
+
+### Financial reporting
+
+| Tool | Description |
+|------|-------------|
+| `get_company_info` | Get company info from QuickBooks |
+| `get_profit_and_loss` | Profit & Loss (Income Statement) for a date range |
+| `get_balance_sheet` | Balance Sheet as of a given date |
+| `list_accounts` | List Chart of Accounts entries, optionally filtered by type |
+| `run_query` | Run a raw QBO query (advanced) |
+
+### Bills
+
+| Tool | Description |
+|------|-------------|
+| `list_bills` | List bills (payables); filter by `unpaid` or `overdue` |
+
+### Employees
+
+| Tool | Description |
+|------|-------------|
+| `list_employees` | List employees, optionally filtered by name or active status |
+| `get_employee` | Get full employee details by ID |
+| `create_employee` | Create a new employee |
+
+### Time tracking
+
+| Tool | Description |
+|------|-------------|
+| `list_time_activities` | List timesheet entries by employee or date range |
+| `create_time_activity` | Record a timesheet entry for an employee |
+
+### Products & services
+
+| Tool | Description |
+|------|-------------|
+| `list_products` | List items (Service / Inventory / NonInventory) |
+| `get_product` | Get full item details by ID |
+| `create_product` | Create a product or service item |
+
+### Invoice theming
+
+| Tool | Description |
+|------|-------------|
+| `get_invoice_theme` | Read current invoice theme (accent color, font, footer, toggles) |
+| `preview_invoice` | Render a branded invoice (HTML), no email sent |
+| `update_company_logo` | Update the logo shown on all invoices |
+
+### Notifications
+
+| Tool | Description |
+|------|-------------|
+| `notify_customer` | Send a customer a message via WhatsApp, email, or iMessage |
+| `notify_owner` | Send an urgent alert to the business owner |
+
+### Schedules
+
+| Tool | Description |
+|------|-------------|
+| `list_schedules` | List configured scheduled agent runs |
+| `add_schedule` | Create or update a scheduled agent run (cron) |
+| `toggle_schedule` | Enable or disable a schedule |
+| `delete_schedule` | Delete a schedule |
+
+### Ask Hawk
+
+| Tool | Description |
+|------|-------------|
+| `ask_hawk` | Send a natural-language message to the Hawk AI brain |
 
 ## Support
 
