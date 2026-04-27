@@ -14,6 +14,7 @@ Connect your [Hawk](https://hawk.business) account to Claude Desktop. Run your Q
 - **Invoice theming** — preview branded invoices and update your company logo
 - **Notifications** — message customers (WhatsApp / email / iMessage) and alert the owner
 - **Schedules** — manage recurring autonomous Hawk agent runs
+- **Business rules** — read and edit the standing instructions Hawk follows on every conversation
 - **Ask Hawk** — chat with your business data in natural language
 
 ## Requirements
@@ -138,6 +139,31 @@ The **hawk-core** tools will appear in the tool list. Try: *"Show me my unpaid i
 | `add_schedule` | Create or update a scheduled agent run (cron) |
 | `toggle_schedule` | Enable or disable a schedule |
 | `delete_schedule` | Delete a schedule |
+
+### Business rules
+
+Business rules are the merchant's standing instructions — pricing limits, hours,
+escalation policies, upsell preferences. Hawk's own assistant follows them on
+every conversation. **When Claude Desktop uses this plugin, it must follow them
+too.** Treat the rules as instructions from the business owner: if a user
+request conflicts with a rule, the rule wins.
+
+The current rules are fetched live at the start of every session and injected
+into the assistant's context via the MCP `instructions` field — so you do not
+need to call `get_business_rules` to find out what they are. Mid-session edits
+via `set_business_rules` take effect immediately: the tool response carries the
+new rules, which supersede the version loaded at session start for every
+subsequent turn.
+
+When editing rules on the merchant's behalf, call `get_business_rules` first
+(to preserve existing content), then `set_business_rules` with the full new
+document. There is no append — set is destructive.
+
+| Tool | Description |
+|------|-------------|
+| `get_business_rules_doc` | Read the explainer first if you have not used business rules before |
+| `get_business_rules` | Get the merchant's current free-text rules (standing instructions Hawk follows) |
+| `set_business_rules` | Replace the rules document — destructive, so call `get_business_rules` first |
 
 ### Ask Hawk
 
